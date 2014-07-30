@@ -13,7 +13,7 @@
 <body>
 <div id="head">Completely Legit Contest Entry Picker Thing!</div>
 <br /><br />
-Reddit post url: <input type="text" id="redditurl" style="width: 200px" />
+reddit post url: <input type="text" id="redditurl" style="width: 200px" />
 <button id="go">Run</button>
 <br /><br />
 <div>Status: <span id="s">Ready...</status></div>
@@ -22,7 +22,7 @@ Reddit post url: <input type="text" id="redditurl" style="width: 200px" />
 <script>
 $("#go").click(function() {
   if (!/^http[s]?:\/\/.*?reddit.com\/.*/.exec($("#redditurl").val())) {
-	alert("Invalid Reddit url");
+	alert("Invalid reddit url");
 	return;
   }
   $("#in").text("");
