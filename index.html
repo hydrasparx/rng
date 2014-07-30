@@ -1,1 +1,58 @@
-test
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>animate demo</title>
+  <style>
+  #head { top: 0; left: 0; width: 100%; height: 30px; margin: 0; padding: 5px; background: #000; color: #fff; font-size: 25px; }
+  #out { width: 200px; height: 20px; border: 1px solid black; }
+  #in { height: 20px; width: 0; }
+  </style>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div id="head">Completely Legit Contest Entry Picker Thing!</div>
+<br /><br />
+Reddit post url: <input type="text" id="redditurl" style="width: 200px" />
+<button id="go">Run</button>
+<br /><br />
+<div>Status: <span id="s">Ready...</status></div>
+<div id="out"><div id="in"></div></div>
+ 
+<script>
+$("#go").click(function() {
+  if (!/^http[s]?:\/\/.*?reddit.com\/.*/.exec($("#redditurl").val())) {
+	alert("Invalid Reddit url");
+	return;
+  }
+  $("#in").text("");
+  $("#in").css("background", "#000");
+  $("#in").animate({
+    width: "100%"
+  }, {
+    duration: 8000,
+    step: function( now, fx ){
+	  var x = Math.floor(now);
+	  switch (x) {
+		case 0:
+			$("#s").text("Initializing...");
+			break;
+		case 5:
+			$("#s").text("Loading Reddit comments...");
+			break;
+		case 30:
+			$("#s").text("Analyzing comments...");
+			break;
+		case 100:
+			$("#in").css("background", "#fff");
+			$("#s").text("Winner picked...");
+			$("#in").text("Winning user: hydrasparx");
+			break;
+	  }
+    }
+  });
+});
+</script>
+ 
+</body>
+</html>
